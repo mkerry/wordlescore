@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Wordle Score</title>
+    <script src="/wordle/index.js?v=2.4" defer></script>
+<!--
+    <script src="https://cdn.usefathom.com/script.js" data-site="KAZHHUJK" defer></script>
+-->
+
+    <link rel="icon"         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>" />
+    <link rel="stylesheet"   href="/wordle/style.css?v=2.2" />
+
+  </head>
+
+  <body>
+
+    <div id="content">
+
+      <header>
+        <h1>Wordle Score</h1>
+      </header>
+
+      <div id="app">
+        <div id="input-container">
+          <label for="input">Your Wordle result:</label>
+          <!-- We intentionally do not autofocus this input: https://github.com/cariad/wa11y.co/issues/4 -->
+          <textarea
+            autocomplete="false"
+            autocorrect="false"
+            cols="15"
+            id="input"
+            placeholder="Paste your game result here."
+            rows="8"
+            spellcheck="false"
+          ></textarea>
+        </div>
+        <div id="output-container">
+          <label for="output">Points:</label>
+          <textarea autocomplete="false" autocorrect="false"
+            id="output" readonly="true" rows="15" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <footer id="credit">
+         <p>
+          <a href="https://www.nytimes.com/games/wordle">Wordle</a> &copy; <a/>
+         </p>
+         <p>
+          Parsing and display code adapted from wa11y.co by <a href="https://cariad.earth/">Cariad Eccleston</a>
+          (<a href="https://tech.lgbt/@cariad" rel="me">@cariad@tech.lgbt</a>).
+        </p>
+        </p>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
