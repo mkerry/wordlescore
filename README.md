@@ -1,2 +1,4 @@
 # wordlescore
-Simple numeric scoring for wordle results
+A little web app for scoring [Wordle](https://www.nytimes.com/games/wordle/) results.
+
+Parsing and display code taken with thanks from [Cariad Eccleston](https://github.com/cariad/wa11y.co).
