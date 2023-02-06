@@ -68,6 +68,7 @@ const linePointsOrig = (line, index, totalCorrect) => {
 }
 
 const linePointsCurrent = (line, index, totalCorrect) => {
+
     const correctPointsByRow = [];
     correctPointsByRow.push(17, 14, 11, 8, 5, 2);
   
@@ -92,6 +93,11 @@ const linePointsCurrent = (line, index, totalCorrect) => {
 }
 
 const calculatePoints = (lines, pointFunction) => {
+
+    if (lines.length > 6) {
+      console.log('Not calculating points. Too many result rows detected.');
+      return 0;
+    }
 
   let index = 0;
   let points = 0;
