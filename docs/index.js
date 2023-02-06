@@ -120,23 +120,28 @@ const render = () => {
   const lines = input.value.split('\n');
   const emojiLines = [];
 
-  lines.forEach((line) => {
-    if (isGameLine(line)) {
-      emojiLines.push(line);
+  // Input textarea size limits crazy input, but add an arbitrary limit to results just in case
+  if (lines.length > 10) {
+    output.value = 'Too many lines in input';
+  } else {
+    lines.forEach((line) => {
+      if (isGameLine(line)) {
+        emojiLines.push(line);
+      }
+    });
+
+    if (emojiLines.length < 1 || emojiLines.length > 6) {
+      output.value = 'Incorrect number of result rows. No score.';
+    } else {
+      let points = calculatePoints(emojiLines, linePointsOrig);
+      let outputOrig = 'Total points for original scoring: ' + points;
+
+      points = calculatePoints(emojiLines, linePointsCurrent);
+      let outputCurr = 'Total points for current scoring: ' + points;
+
+      output.value = outputOrig+'\n'+outputCurr+'\n';
     }
-    else {
-      output.value += `${line}\n`;
-    }
-  });
-
-  let points = calculatePoints(emojiLines, linePointsOrig);
-  let outputOrig = 'Total points for original scoring: ' + points;
-
-  points = calculatePoints(emojiLines, linePointsCurrent);
-  let outputCurr = 'Total points for current scoring: ' + points;
-
-  output.value = outputOrig+'\n'+outputCurr+'\n';
-
+  }
 }
 
 
