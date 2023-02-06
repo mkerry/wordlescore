@@ -72,7 +72,7 @@ const linePointsCurrent = (line, index, totalCorrect) => {
     correctPointsByRow.push(17, 14, 11, 8, 5, 2);
   
     const rowBonuses = [];
-    rowBonuses.push(15, 11, 8, 4, 2);
+    rowBonuses.push(15, 11, 8, 4, 2, 1);
   
     const partialPoints = 1;
   
@@ -80,6 +80,7 @@ const linePointsCurrent = (line, index, totalCorrect) => {
   
     let newCorrect = (decoded.perfectIndexes.length - totalCorrect);
 
+    //console.log('num eprfects: ' + decoded.perfectIndexes.length + ' newCorrect: ' + newCorrect + ' yellows: ' + decoded.misplacedIndexes.length);
     let rowBonus = 0;
     if (decoded.perfectIndexes.length == 5) {
       rowBonus = rowBonuses[index];
