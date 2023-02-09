@@ -135,17 +135,16 @@ const calculatePoints = (lines, pointFunction) => {
   let index = 0;
   let points = 0;
   let correctCount = 0;
-  lines.every((line) => {
-    console.log('Calculating points for line index: ' + index + ' line: ' + line);
-    let results = pointFunction(line, index, correctCount);
-    console.log('line points: ' + results[0]);
-    points += results[0];
-    correctCount += results[1];
-    console.log('correctCount: ' + correctCount);
-    console.log('cumulative points: ' + points);
-    index += 1;
-    if (correctCount === 5) {
-      return false;
+  lines.forEach((line) => {
+    if (correctCount < 5) {
+      console.log('Calculating points for line index: ' + index + ' line: ' + line);
+      let results = pointFunction(line, index, correctCount);
+      console.log('line points: ' + results[0]);
+      points += results[0];
+      correctCount += results[1];
+      console.log('correctCount: ' + correctCount);
+      console.log('cumulative points: ' + points);
+      index += 1;
     }
   });
   console.log('total points: ' + points);
