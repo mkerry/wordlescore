@@ -60,7 +60,11 @@ const linePointsOrig = (line, index, totalCorrect) => {
     
     const decoded = blockTypes(line);
     
-    let newCorrect = (decoded.perfectIndexes.length - totalCorrect);
+    let newCorrect = (decoded.perfectIndexes.length > totalCorrect) ?  (decoded.perfectIndexes.length - totalCorrect) : 0;
+
+console.log('newCorrect: ' + newCorrect);
+console.log('decoded.misplacedIndexes.length: ' + decoded.misplacedIndexes.length);
+console.log('correctPointsByRow[index]*newCorrect: ' + correctPointsByRow[index]*newCorrect);
 
     let linePoints = correctPointsByRow[index]*newCorrect + decoded.misplacedIndexes.length;
 
@@ -79,7 +83,10 @@ const linePointsCurrent = (line, index, totalCorrect) => {
   
     const decoded = blockTypes(line);
   
-    let newCorrect = (decoded.perfectIndexes.length - totalCorrect);
+    let newCorrect = (decoded.perfectIndexes.length > totalCorrect) ?  (decoded.perfectIndexes.length - totalCorrect) : 0;
+console.log('newCorrect: ' + newCorrect);
+console.log('decoded.misplacedIndexes.length: ' + decoded.misplacedIndexes.length);
+console.log('correctPointsByRow[index]*newCorrect: ' + correctPointsByRow[index]*newCorrect);
 
     //console.log('num eprfects: ' + decoded.perfectIndexes.length + ' newCorrect: ' + newCorrect + ' yellows: ' + decoded.misplacedIndexes.length);
     let rowBonus = 0;
@@ -90,6 +97,32 @@ const linePointsCurrent = (line, index, totalCorrect) => {
     let linePoints = correctPointsByRow[index]*newCorrect + decoded.misplacedIndexes.length + rowBonus;
 
     return [linePoints, newCorrect];
+}
+
+const linePointsNew = (line, index, totalCorrect) => {
+
+    const correctPointsByRow = [];
+    correctPointsByRow.push(2, 2, 2, 2, 2, 2);
+
+    const rowBonuses = [];
+    rowBonuses.push(90, 80, 70, 60, 50, 40);
+
+    const partialPoints = 1;
+
+    const decoded = blockTypes(line);
+
+    let newCorrect = (decoded.perfectIndexes.length > totalCorrect) ?  (decoded.perfectIndexes.length - totalCorrect) : 0;
+
+    //console.log('num eprfects: ' + decoded.perfectIndexes.length + ' newCorrect: ' + newCorrect + ' yellows: ' + decoded.misplacedIndexes.length);
+    let rowBonus = 0;
+    if (decoded.perfectIndexes.length == 5) {
+      rowBonus = rowBonuses[index];
+    }
+
+    let linePoints = correctPointsByRow[index]*newCorrect + decoded.misplacedIndexes.length + rowBonus;
+
+    return [linePoints, newCorrect];
+
 }
 
 const calculatePoints = (lines, pointFunction) => {
@@ -108,6 +141,8 @@ const calculatePoints = (lines, pointFunction) => {
     console.log('line points: ' + results[0]);
     points += results[0];
     correctCount += results[1];
+    console.log('correctCount: ' + correctCount);
+    console.log('cumulative points: ' + points);
     index += 1;
   });
   console.log('total points: ' + points);
@@ -139,7 +174,10 @@ const render = () => {
       points = calculatePoints(emojiLines, linePointsCurrent);
       let outputCurr = 'Total points for current scoring: ' + points;
 
-      output.value = outputOrig+'\n'+outputCurr+'\n';
+      points = calculatePoints(emojiLines, linePointsNew);
+      let outputNew = 'Total points for new scoring: ' + points;
+
+      output.value = outputOrig+'\n'+outputCurr+'\n'+outputNew+'\n';
     }
   }
 }
