@@ -135,7 +135,7 @@ const calculatePoints = (lines, pointFunction) => {
   let index = 0;
   let points = 0;
   let correctCount = 0;
-  lines.forEach((line) => {
+  lines.every((line) => {
     console.log('Calculating points for line index: ' + index + ' line: ' + line);
     let results = pointFunction(line, index, correctCount);
     console.log('line points: ' + results[0]);
@@ -144,6 +144,9 @@ const calculatePoints = (lines, pointFunction) => {
     console.log('correctCount: ' + correctCount);
     console.log('cumulative points: ' + points);
     index += 1;
+    if (correctCount === 5) {
+      return false;
+    }
   });
   console.log('total points: ' + points);
   return points;
@@ -165,8 +168,8 @@ const render = () => {
       }
     });
 
-    if (emojiLines.length < 1 || emojiLines.length > 6) {
-      output.value = 'Incorrect number of result rows. No score.';
+    if (emojiLines.length > 6) {
+      output.value = 'Incorrect number of result rows.';
     } else {
       let points = calculatePoints(emojiLines, linePointsOrig);
       let outputOrig = 'Total points for original scoring: ' + points;
