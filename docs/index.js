@@ -99,7 +99,7 @@ console.log('correctPointsByRow[index]*newCorrect: ' + correctPointsByRow[index]
     return [linePoints, newCorrect];
 }
 
-const linePointsNew = (line, index, totalCorrect) => {
+const linePointsStd = (line, index, totalCorrect) => {
 
     const correctPointsByRow = [];
     correctPointsByRow.push(2, 2, 2, 2, 2, 2);
@@ -176,11 +176,11 @@ const render = () => {
 //      points = calculatePoints(emojiLines, linePointsCurrent);
 //      let outputCurr = 'Total points for current scoring: ' + points;
 
-      let points = calculatePoints(emojiLines, linePointsNew);
-      let outputNew = 'Total points for new scoring: ' + points;
+      let points = calculatePoints(emojiLines, linePointsStandard);
+      let outputStd = 'Total points (standard scoring): ' + points;
 
 //      output.value = outputOrig+'\n'+outputCurr+'\n'+outputNew+'\n';
-      output.value = outputNew+'\n';
+      output.value = outputStd+'\n';
     }
   }
 }
