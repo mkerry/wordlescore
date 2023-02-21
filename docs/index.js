@@ -176,7 +176,7 @@ const render = () => {
 //      points = calculatePoints(emojiLines, linePointsCurrent);
 //      let outputCurr = 'Total points for current scoring: ' + points;
 
-      let points = calculatePoints(emojiLines, linePointsStandard);
+      let points = calculatePoints(emojiLines, linePointsStd);
       let outputStd = 'Total points (standard scoring): ' + points;
 
 //      output.value = outputOrig+'\n'+outputCurr+'\n'+outputNew+'\n';
