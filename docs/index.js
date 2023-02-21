@@ -170,16 +170,17 @@ const render = () => {
     if (emojiLines.length > 6) {
       output.value = 'Incorrect number of result rows.';
     } else {
-      let points = calculatePoints(emojiLines, linePointsOrig);
-      let outputOrig = 'Total points for original scoring: ' + points;
+//      let points = calculatePoints(emojiLines, linePointsOrig);
+//      let outputOrig = 'Total points for original scoring: ' + points;
 
-      points = calculatePoints(emojiLines, linePointsCurrent);
-      let outputCurr = 'Total points for current scoring: ' + points;
+//      points = calculatePoints(emojiLines, linePointsCurrent);
+//      let outputCurr = 'Total points for current scoring: ' + points;
 
-      points = calculatePoints(emojiLines, linePointsNew);
+      let points = calculatePoints(emojiLines, linePointsNew);
       let outputNew = 'Total points for new scoring: ' + points;
 
-      output.value = outputOrig+'\n'+outputCurr+'\n'+outputNew+'\n';
+//      output.value = outputOrig+'\n'+outputCurr+'\n'+outputNew+'\n';
+      output.value = outputNew+'\n';
     }
   }
 }
